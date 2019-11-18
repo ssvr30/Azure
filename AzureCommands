@@ -1,0 +1,4 @@
+To Stop a running container:
+
+Invoke-AzResourceAction -ResourceGroupName $resourceGroup -ResourceName ssvrtest -Action `
+>> stop -ResourceType Microsoft.ContainerInstance/containerGroups
