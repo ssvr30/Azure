@@ -1,0 +1,66 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string"
+        },
+        "virtualNetworkName": {
+            "type": "string"
+        },
+        "resourceGroup": {
+            "type": "string"
+        },
+        "addressSpaces": {
+            "type": "array"
+        },
+        "subnetCount": {
+            "type": "int"
+        },
+        "subnet_name": {
+            "type": "string"
+        },
+        "subnet_addressRange": {
+            "type": "string"
+        },
+        "ddosProtectionPlanEnabled": {
+            "type": "bool"
+        },
+        "firewallEnabled": {
+            "type": "bool"
+        },
+        "bastionEnabled": {
+            "type": "bool"
+        }
+    },
+    "functions": [
+    ],
+    "variables": {
+    },
+    "resources": [
+        {
+            "name": "[parameters('virtualNetworkName')]",
+            "type": "Microsoft.Network/VirtualNetworks",
+            "apiVersion": "2019-11-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "[parameters('VirtualNetworkName')]"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.1.0.0/16"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "spokesubnet",
+                        "properties": {
+                            "addressPrefix": "10.1.0.0/24"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "australiaeast"
+        },
+        "virtualNetworkName": {
+            "value": "Spoke"
+        },
+        "resourceGroup": {
+            "value": "arm-vpc"
+        },
+        "addressSpaces": {
+            "value": [
+                "10.1.0.0/16"
+            ]
+        },
+        "subnetCount": {
+            "value": 1
+        },
+        "subnet_name": {
+            "value": "spokesubnet"
+        },
+        "subnet_addressRange": {
+            "value": "10.1.0.0/24"
+        },
+        "ddosProtectionPlanEnabled": {
+            "value": false
+        },
+        "firewallEnabled": {
+            "value": false
+        },
+        "bastionEnabled": {
+            "value": false
+        }
+    }
+}
