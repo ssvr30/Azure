@@ -54,7 +54,7 @@
                 },
                 "subnets": [
                     {
-                        "name": "spokesubnet",
+                        "name": "subnet",
                         "properties": {
                             "addressPrefix": "10.1.0.0/24"
                         }

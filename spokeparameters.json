@@ -6,10 +6,10 @@
             "value": "australiaeast"
         },
         "virtualNetworkName": {
-            "value": "Spoke"
+            "value": "armvpc"
         },
         "resourceGroup": {
-            "value": "arm-vpc"
+            "value": "arm"
         },
         "addressSpaces": {
             "value": [
@@ -20,7 +20,7 @@
             "value": 1
         },
         "subnet_name": {
-            "value": "spokesubnet"
+            "value": "subnet"
         },
         "subnet_addressRange": {
             "value": "10.1.0.0/24"
