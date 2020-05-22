@@ -1,3 +1,3 @@
 # Azure
 
-This repo is the collection of my work with Azure portal.
+This repo is the collection of my work on Azure.
