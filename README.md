@@ -6,7 +6,11 @@ This repo is the collection of my work on Azure.
 
 2. CreateVNET.ps1 : A pwsh script to create resources
 
-3. spoketemplate.json : ARM template to create a vNet and Subnet
+3. addingtoexistingtemplate.json : Create with the validation condition to check if the existence of resource 
 
-4. spokeparameters.json : ARM paramater file for spoketemplate.json
+4. addingtoexistingparameters.json : Supporting parameter file for "addingtoexistingtemplate.json"
+
+5. spoketemplate.json : ARM template to create a vNet and Subnet
+
+6. spokeparameters.json : ARM paramater file for spoketemplate.json
 	
