@@ -1,0 +1,56 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "australiaeast"
+        },
+        "vmName": {
+            "value": "armvm"
+        },
+        "adminUsername": {
+            "value": "ssvr"
+        },
+        "authenticationType": {
+            "value": "sshPublicKey"
+        },
+        "adminPasswordOrKey": {
+            "value": "ssh-rsa"
+        },
+        "vmSize": {
+            "value": "Standard_B1ms"
+        },
+        "virtualNetworkNewOrExisting": {
+            "value": "Existing"
+        },
+        "virtualNetworkName": {
+            "value": "Spoke"
+        },
+        "addressPrefixes": {
+            "value": [
+                "10.0.0.0/16"
+            ]
+        },
+        "subnetName": {
+            "value": "subnet"
+        },
+        "subnetPrefix": {
+            "value": "10.0.0.0/24"
+        },
+        "virtualNetworkResourceGroupName": {
+            "value": "arm"
+        },
+        "publicIpNewOrExisting": {
+            "value": "new"
+        },
+        "publicIpName": {
+            "value": "PublicIp"
+        },
+        "publicIpDns": {
+            "value": "armdns"
+        },
+        "publicIpResourceGroupName": {
+            "value": "arm"
+        }
+    }
+}
