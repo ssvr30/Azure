@@ -10,6 +10,8 @@ This repo is the collection of my work on Azure.
 
 4. addingtoexistingparameters.json : Supporting parameter file for "addingtoexistingtemplate.json"
 
+5. hubandspoke.png : Diagram as a Code. For Azure Design.
+
 5. spoketemplate.json : ARM template to create a vNet and Subnet
 
 6. spokeparameters.json : ARM paramater file for spoketemplate.json
