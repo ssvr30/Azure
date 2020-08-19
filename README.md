@@ -15,4 +15,6 @@ This repo is the collection of my work on Azure.
 5. spoketemplate.json : ARM template to create a vNet and Subnet
 
 6. spokeparameters.json : ARM paramater file for spoketemplate.json
+
+7. templateLinLGA.json : ARM template file for loganalytics VM running Ubuntu.
 	
