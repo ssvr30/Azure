@@ -1,0 +1,120 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/loadBalancers",
+            "apiVersion": "2020-11-01",
+            "name": "FronEnd_IP",
+            "location": "Location",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', 'FronEnd_IP', 'Backend_Pool')]"
+            ],
+            "tags": {
+                "App Name": "Tagging information"
+            },
+            "sku": {
+                "name": "Standard",
+                "tier": "Regional"
+            },
+            "properties": {
+                "frontendIPConfigurations": [
+                    {
+                        "name": "LoadBalancerFrontEnd",
+                        "properties": {
+                            "privateIPAddress": "xx.xxx.xxx.xx",
+                            "privateIPAllocationMethod": "Static",
+                            "subnet": {
+                                "id": "/subscriptions/xxxxxxxx-xxxxxxxx/resourceGroups/RGName/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/sub_name"
+                            },
+                            "privateIPAddressVersion": "IPv4"
+                        },
+                        // Choose Zone Redundnacy if required to spread across many Zones, applicable for Public IP's
+                        "zones": [
+                            "1",
+                            "2",
+                            "3"
+                        ]
+                    }
+                ],
+                "backendAddressPools": [
+                    {
+                        "name": "backendpool_name",
+                        "properties": {
+                            "loadBalancerBackendAddresses": [
+                                {
+                                    "name": "VM_ nic01ipconfig1",
+                                    "properties": {}
+                                },
+                                {
+                                    "name": "VM-nic01ipconfig2",
+                                    "properties": {}
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "loadBalancingRules": [
+                    {
+                        "name": "loadbalancingrule",
+                        "properties": {
+                            "frontendIPConfiguration": {
+                                "id": "[concat(resourceId('Microsoft.Network/loadBalancers', 'FronEnd_IP'), '/frontendIPConfigurations/LoadBalancerFrontEnd')]"
+                            },
+                            "frontendPort": 443,
+                            "backendPort": 443,
+                            "enableFloatingIP": false,
+                            "idleTimeoutInMinutes": 4,
+                            "protocol": "Tcp",
+                            "enableTcpReset": false,
+                            "loadDistribution": "Default",
+                            "disableOutboundSnat": false,
+                            "backendAddressPool": {
+                                "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', 'FronEnd_IP', 'Backend_Pool')]"
+                            },
+                            "probe": {
+                                "id": "[concat(resourceId('Microsoft.Network/loadBalancers', 'npedcadfsuser-ilb01'), '/probes/HealthProbe-443')]"
+                            }
+                        }
+                    }
+                ],
+                "probes": [
+                    {
+                        "name": "HealthProbe-443",
+                        "properties": {
+                            "protocol": "Tcp",
+                            "port": 443,
+                            "intervalInSeconds": 5,
+                            "numberOfProbes": 2
+                        }
+                    }
+                ],
+                "inboundNatRules": [],
+                "outboundRules": [],
+                "inboundNatPools": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/loadBalancers/backendAddressPools",
+            "apiVersion": "2020-11-01",
+            "name": "FronEnd_IP/Backend_Pool",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/loadBalancers', 'FronEnd_IP')]"
+            ],
+            "properties": {
+                "loadBalancerBackendAddresses": [
+                    {
+                        "name": "VM_ nic01ipconfig1",
+                        "properties": {}
+                    },
+                    {
+                        "name": "VM-nic01ipconfig2",
+                        "properties": {}
+                    }
+                ]
+            }
+        }
+    ]
+}
