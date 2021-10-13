@@ -1,0 +1,23 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "australiaeast"
+        },
+        "resourcegroupName": {
+            "value": "ssvrlag"
+        },
+        "subscriptionId": {
+            "value": "d3a2997e-35cd-4a76-b1a9-23383ad8deaa"
+        },
+        "workspaceName": {
+            "value": "ssvrlaw"
+        },
+        "solutionTypes": {
+            "value": [
+                "ServiceMap"
+            ]
+        }
+    }
+}
